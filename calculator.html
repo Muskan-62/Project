@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Percentage Calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Percentage Calculator</h1>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </header>
+
+        <main>
+            <div class="mode-selector">
+                <button class="mode-btn active" data-mode="what-is">Calculate Percentage</button>
+                <button class="mode-btn" data-mode="x-is">Find Percentage</button>
+                <button class="mode-btn" data-mode="percent-change">Percentage Change</button>
+                <button class="mode-btn" data-mode="tax">Tax Calculator</button>
+                <button class="mode-btn" data-mode="profit">Profit/Loss</button>
+            </div>
+
+            <div class="calculator">
+                <!-- Mode 1: Calculate Percentage -->
+                <div class="mode-content active" id="what-is">
+                    <div class="input-group">
+                        <label for="whatIsX">Percentage (%)</label>
+                        <input type="number" id="whatIsX" placeholder="Enter percentage" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="whatIsY">Value</label>
+                        <input type="number" id="whatIsY" placeholder="Enter value" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="whatIsResult">Result</label>
+                        <input type="text" id="whatIsResult" placeholder="0" readonly>
+                    </div>
+                    <div class="breakdown">
+                        <h3>Calculation Breakdown</h3>
+                        <p id="whatIsBreakdown">Enter values to see breakdown</p>
+                    </div>
+                </div>
+
+                <!-- Mode 2: Find Percentage -->
+                <div class="mode-content" id="x-is">
+                    <div class="input-group">
+                        <label for="xIsX">Portion</label>
+                        <input type="number" id="xIsX" placeholder="Enter portion" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="xIsY">Total Amount</label>
+                        <input type="number" id="xIsY" placeholder="Enter total" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="xIsResult">Result (%)</label>
+                        <input type="text" id="xIsResult" placeholder="0%" readonly>
+                    </div>
+                    <div class="breakdown">
+                        <h3>Calculation Breakdown</h3>
+                        <p id="xIsBreakdown">Enter values to see breakdown</p>
+                    </div>
+                </div>
+
+                <!-- Mode 3: Percentage Change -->
+                <div class="mode-content" id="percent-change">
+                    <div class="input-group">
+                        <label for="changeOriginal">Original Value</label>
+                        <input type="number" id="changeOriginal" placeholder="Enter original value" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="changeNew">New Value</label>
+                        <input type="number" id="changeNew" placeholder="Enter new value" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="changeResult">Percentage Change (%)</label>
+                        <input type="text" id="changeResult" placeholder="0%" readonly>
+                    </div>
+                    <div class="breakdown">
+                        <h3>Calculation Breakdown</h3>
+                        <p id="changeBreakdown">Enter values to see breakdown</p>
+                    </div>
+                </div>
+
+                <!-- Mode 4: Tax Calculator -->
+                <div class="mode-content" id="tax">
+                    <div class="input-group">
+                        <label for="taxAmount">Amount</label>
+                        <input type="number" id="taxAmount" placeholder="Enter amount" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="taxRate">Tax Rate (%)</label>
+                        <input type="number" id="taxRate" placeholder="Enter tax rate" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="taxValue">Tax Amount</label>
+                        <input type="text" id="taxValue" placeholder="0" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="taxTotal">Total (with tax)</label>
+                        <input type="text" id="taxTotal" placeholder="0" readonly>
+                    </div>
+                    <div class="breakdown">
+                        <h3>Calculation Breakdown</h3>
+                        <p id="taxBreakdown">Enter values to see breakdown</p>
+                    </div>
+                </div>
+
+                <!-- Mode 5: Profit/Loss Calculator -->
+                <div class="mode-content" id="profit">
+                    <div class="input-group">
+                        <label for="profitCost">Cost Price</label>
+                        <input type="number" id="profitCost" placeholder="Enter cost price" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="profitSelling">Selling Price</label>
+                        <input type="number" id="profitSelling" placeholder="Enter selling price" step="0.01">
+                    </div>
+                    <div class="input-group">
+                        <label for="profitAmount">Profit/Loss Amount</label>
+                        <input type="text" id="profitAmount" placeholder="0" readonly>
+                    </div>
+                    <div class="input-group">
+                        <label for="profitPercent">Profit/Loss Percentage (%)</label>
+                        <input type="text" id="profitPercent" placeholder="0%" readonly>
+                    </div>
+                    <div class="breakdown">
+                        <h3>Calculation Breakdown</h3>
+                        <p id="profitBreakdown">Enter values to see breakdown</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="reset-btn" id="resetBtn">Reset All</button>
+        </main>
+
+        <footer>
+            <p>Fast, accurate percentage calculations</p>
+        </footer>
+    </div>
+
+    <script src="calculator.js"></script>
+<script src="https://replit-cdn.com/replit-pill/replit-pill.global.js" data-referral-code="glasgul016m8" data-repl-id="9e52eb0f-dec7-46be-80ef-425af26a5187"></script></body>
+</html>
