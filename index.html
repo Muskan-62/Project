@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diet Plan Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #219150;
+        }
+
+        .result {
+            margin-top: 15px;
+            background: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Diet Plan Generator</h2>
+
+    <input type="number" id="weight" placeholder="Weight (kg)">
+    <input type="number" id="height" placeholder="Height (cm)">
+    <input type="number" id="age" placeholder="Age">
+
+    <select id="goal">
+        <option value="">Select Goal</option>
+        <option value="loss">Weight Loss</option>
+        <option value="maintain">Maintain Weight</option>
+        <option value="gain">Weight Gain</option>
+    </select>
+
+    <button onclick="generatePlan()">Get Diet Plan</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function generatePlan() {
+    let weight = document.getElementById("weight").value;
+    let height = document.getElementById("height").value;
+    let goal = document.getElementById("goal").value;
+
+    if (!weight || !height || !goal) {
+        document.getElementById("result").innerHTML = "Please fill all fields.";
+        return;
+    }
+
+    let heightMeters = height / 100;
+    let bmi = (weight / (heightMeters * heightMeters)).toFixed(1);
+
+    let diet = "";
+
+    if (goal === "loss") {
+        diet = `
+        <b>Goal:</b> Weight Loss<br>
+        <ul>
+            <li>Breakfast: Oats + fruit</li>
+            <li>Lunch: Brown rice + vegetables</li>
+            <li>Snack: Fruits or nuts</li>
+            <li>Dinner: Salad + protein</li>
+            <li>Avoid sugary & fried food</li>
+        </ul>`;
+    } 
+    else if (goal === "maintain") {
+        diet = `
+        <b>Goal:</b> Maintain Weight<br>
+        <ul>
+            <li>Breakfast: Eggs + toast</li>
+            <li>Lunch: Rice/roti + vegetables</li>
+            <li>Snack: Yogurt or fruits</li>
+            <li>Dinner: Balanced meal</li>
+        </ul>`;
+    } 
+    else if (goal === "gain") {
+        diet = `
+        <b>Goal:</b> Weight Gain<br>
+        <ul>
+            <li>Breakfast: Milk + banana + oats</li>
+            <li>Lunch: Rice + protein</li>
+            <li>Snack: Peanut butter sandwich</li>
+            <li>Dinner: High-protein meal</li>
+        </ul>`;
+    }
+
+    document.getElementById("result").innerHTML = `
+        <b>Your BMI:</b> ${bmi}<br><br>
+        ${diet}
+    `;
+}
+</script>
+
+</body>
+</html>
